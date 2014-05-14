@@ -176,7 +176,7 @@ bool CompleteRE(string &re)
 string PreConcat(string re)
 {
 	string strRes = "";
-	for(int i=0;i<re.length();i++)
+	for(int i=0;i<re.length()-1;i++)
 	{
 		char ch=re[i];
 		strRes.append(1,ch);
@@ -188,6 +188,7 @@ string PreConcat(string re)
 		}
 	}
 	strRes.append(1,'#');
+	//strRes+=' ';
 	return strRes;
 }
 
