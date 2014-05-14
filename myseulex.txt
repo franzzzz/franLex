@@ -1,0 +1,88 @@
+%{
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include "yytype.h"
+%}
+digit	[0-9]
+nature  [1-9]
+letter	[a-zA-Z]
+id	{letter}[{letter}|{digit}]^
+integer	{nature}{digit}^|{digit}
+floatnum	[{nature}|{digit}]^.{digit}^
+port	${digit}^
+%%
+"auto"		{return "AUTO";}
+"break"		{return "BREAK";}
+"case"		{return "CASE";}
+"char"		{return "CHAR";}
+"const"		{return "CONST";}
+"continue"	{return "CONTINUE";}
+"default"	{return "DEFAULT";}
+"do"		{return "DO";}
+"double"	{return "DOUBLE";}
+"else"		{return "ELSE";}
+"enum"		{return "ENUM";}
+"extern"	{return "EXTERN";}
+"for"		{return "FOR";}
+"if"		{return "IF";}
+"int"		{return "INT";}
+"return"	{return "RETURN";}
+"static"	{return "STATIC";}
+"struct"	{return "STRUCT";}
+"switch"	{return "SWITCH";}
+"void"		{return "VOID";}
+"while"		{return "WHILE";}
+{id}		{return "IDENTIFIER";}
+{port}		{return "PORT";}
+{floatnum}	{return "FLOATNUM";}
+{integer}	{return "INTEGER";}
+"="		{return "=";}
+"+"		{return "+";}
+"-"		{return "-";}
+"*"		{return "*";}
+"/"		{return "/";}
+"+="		{return "ADD_ASSIGN";}
+"-="		{return "SUB_ASSIGN";}
+"*="		{return "MUL_ASSIGN";}
+"/="		{return "DIV_ASSIGN";}
+"%="		{return "MOD_ASSIGN";}
+"&="		{return "AND_ASSIGN";}
+">>"		{return "RIGHT_OP";}
+"<<"		{return "LEFT_OP";}
+"++"		{return "INC_OP";}
+"--"		{return "DEC_OP";}
+"->"		{return "PTR_OP";}
+"&&"		{return "ADD_OP";}
+"<="		{return "LE_OP";}
+">="		{return "GE_OP";}
+"!="		{return "NE_OP";}
+"=="		{return "EQ_OP";}
+":"		{return (":");}
+(		{return ("(");}
+)		{return (")");}
+"!"		{return ("!");}
+"+"		{return ("+");}
+"-"		{return ("-");}
+"/"		{return ("/");}
+"%"		{return ("%");}
+"<"		{return ("<");}
+">"		{return (">");}
+":"		{return (":");}
+"?"		{return ("?");}
+";"		{return (";");}
+","		{return (",");}
+"["		{return ("[");}
+"]"		{return	("]");}
+"{"		{return ("{");}
+"}"		{return ("}");}
+%%
+void main()
+{
+        string s;
+        while(true){
+            cin>>s;
+            cout<<analysis(s)<<endl;
+        }
+	return ;
+}
