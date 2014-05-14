@@ -175,7 +175,7 @@ bool CompleteRE(string &re)
 //将如果*、)、. 、字符后面是字符或(则在此符号后加'@'  并以'#'结束 ，配合ChangeRe(string)使用
 string PreConcat(string re)
 {
-	string strRes = "";
+	string strRes = " ";
 	for(int i=0;i<re.length()-1;i++)
 	{
 		char ch=re[i];
@@ -183,7 +183,7 @@ string PreConcat(string re)
 		if(ch!= '|' && ch != '(')
 		{
 			char temp = re[i+1];
-			if('\0' != temp && '^' != temp && '|'!=temp && ')'!=temp)
+			if(' ' != temp && '^' != temp && '|'!=temp && ')'!=temp)
 				strRes.append(1,'@');
 		}
 	}
